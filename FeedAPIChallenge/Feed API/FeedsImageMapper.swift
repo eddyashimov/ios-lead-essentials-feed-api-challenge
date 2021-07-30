@@ -8,7 +8,7 @@
 
 import Foundation
 
-final internal class FeedImageMapper {
+final class FeedImageMapper {
 	private static var OK_200: Int { return 200 }
 
 	private struct Root: Decodable {
@@ -19,16 +19,16 @@ final internal class FeedImageMapper {
 	}
 
 	private struct Image: Decodable {
-		public let id: UUID
-		public let description: String?
-		public let location: String?
-		public let url: URL
+		private let image_id: UUID
+		private let image_desc: String?
+		private let image_loc: String?
+		private let image_url: URL
 
 		var item: FeedImage {
-			return FeedImage(id: id,
-			                 description: description,
-			                 location: location,
-			                 url: url)
+			return FeedImage(id: image_id,
+			                 description: image_desc,
+			                 location: image_loc,
+			                 url: image_url)
 		}
 	}
 

@@ -120,7 +120,7 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
 
 		var capturedResults = [RemoteFeedLoader.Result]()
 		sut?.load { capturedResults.append($0) }
-		
+
 		sut = nil
 		client.complete(withStatusCode: 200, data: makeItemsJSON([]))
 
@@ -141,10 +141,10 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
 		let item = FeedImage(id: id, description: description, location: location, url: imageURL)
 
 		let json = [
-			"id": id.uuidString,
-			"description": description,
-			"location": location,
-			"url": imageURL.absoluteString
+			"image_id": id.uuidString,
+			"image_desc": description,
+			"image_loc": location,
+			"image_url": imageURL.absoluteString
 		].compactMapValues { $0 }
 
 		return (item, json)
